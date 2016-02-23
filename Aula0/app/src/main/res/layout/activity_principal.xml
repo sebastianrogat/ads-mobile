@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="br.unopar.aula0.PrincipalActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:id="@+id/txvMedia"
+        android:layout_alignTop="@+id/btnAtualiza"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="71dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calcular"
+        android:id="@+id/btnAtualiza"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/txvMedia"
+        android:layout_alignStart="@+id/txvMedia" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/edxAt1"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:hint="Atividade 1" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/edxNt1"
+        android:hint="Prova 1"
+        android:layout_below="@+id/edxAt1"
+        android:layout_alignLeft="@+id/edxAt1"
+        android:layout_alignStart="@+id/edxAt1" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/edxAt2"
+        android:hint="Atividade 2"
+        android:layout_below="@+id/edxNt1"
+        android:layout_alignLeft="@+id/edxNt1"
+        android:layout_alignStart="@+id/edxNt1" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/edxNt2"
+        android:hint="Prova 2"
+        android:layout_below="@+id/edxAt2"
+        android:layout_alignLeft="@+id/edxAt2"
+        android:layout_alignStart="@+id/edxAt2" />
+</RelativeLayout>
