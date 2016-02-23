@@ -95,6 +95,26 @@ public class MainActivity extends AppCompatActivity {
         showMsg("Total de Registros: " + String.valueOf(conta));
     }
 
+    private String contaAcessoPorUsuario() {
+        String sql = "SELECT Login, COUNT(*) FROM AcessoUsuario GROUP BY Login";
+
+        StringBuilder retorno = new StringBuilder();
+
+        Cursor cursor = db.rawQuery(sql, null);
+        while(cursor.moveToNext()) {
+            retorno.append(
+                    cursor.getString(0)
+                            + ": "
+                            + String.valueOf(cursor.getLong(1)));
+        }
+
+        if(retorno.length() == 0) {
+            return "Nenhum acesso registrado!";
+        }
+
+        return retorno.toString();
+    }
+
 
     private void showMsg(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
@@ -114,5 +134,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnContaClick(View view) {
         contaAcessoUsuario();
+    }
+
+    public void btnContaAcessosClick(View view) {
+        showMsg(contaAcessoPorUsuario());
     }
 }
