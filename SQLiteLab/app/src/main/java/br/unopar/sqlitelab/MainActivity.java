@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         long id = db.insert("AcessoUsuario", null, valores);
 
-        if(id != -1)
+        if (id != -1)
             showMsg("Registro inserido com sucesso!");
         else
             showMsg("Registro não foi inserido!");
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         int contaUpdate = db.update("AcessoUsuario", valores, "Login = ?", whereArgs);
 
-        if(contaUpdate > 0)
+        if (contaUpdate > 0)
             showMsg("Registro atualizado com sucesso.");
         else
             showMsg("Registro não foi atualizado.");
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         int contaDelete = db.delete("AcessoUsuario", "Login = ?", whereArgs);
 
-        if(contaDelete > 0)
+        if (contaDelete > 0)
             showMsg("Registro excluído com sucesso.");
         else
             showMsg("Registro não foi excluído.");
@@ -101,14 +101,14 @@ public class MainActivity extends AppCompatActivity {
         StringBuilder retorno = new StringBuilder();
 
         Cursor cursor = db.rawQuery(sql, null);
-        while(cursor.moveToNext()) {
+        while (cursor.moveToNext()) {
             retorno.append(
                     cursor.getString(0)
                             + ": "
                             + String.valueOf(cursor.getLong(1)));
         }
 
-        if(retorno.length() == 0) {
+        if (retorno.length() == 0) {
             return "Nenhum acesso registrado!";
         }
 
