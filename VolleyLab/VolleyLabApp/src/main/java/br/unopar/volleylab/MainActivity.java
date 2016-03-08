@@ -1,5 +1,6 @@
 package br.unopar.volleylab;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView imvFoto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imvFoto = (ImageView)findViewById(R.id.imvFoto);
+        imvFoto = (ImageView) findViewById(R.id.imvFoto);
     }
 
     @Override
@@ -62,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnCarregarFotoClick(View view) {
+        final ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setTitle("Por favor espere!");
+        dialog.setCancelable(false);
+
+        dialog.show();
+
+        imvFoto.setImageBitmap(null);
+
         String url = "http://i.telegraph.co.uk/multimedia/archive/03171/mr_bean_edit_3171783b.jpg";
 
         ImageRequest buscaImagem = new ImageRequest(
@@ -70,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Bitmap response) {
                         imvFoto.setImageBitmap(response);
+                        dialog.hide();
                     }
                 },
                 0, 0,
@@ -77,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        dialog.hide();
                         Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
