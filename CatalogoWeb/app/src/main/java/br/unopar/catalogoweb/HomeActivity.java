@@ -80,7 +80,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void carregaDados() {
         lsvItens.setVisibility(View.VISIBLE);
-        btnReload.setVisibility(View.INVISIBLE);
+        btnReload.setVisibility(View.GONE);
 
         final ProgressDialog dialog = new ProgressDialog(this);
         dialog.setTitle("Carregando...");
@@ -103,7 +103,7 @@ public class HomeActivity extends AppCompatActivity {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                lsvItens.setVisibility(View.INVISIBLE);
+                                lsvItens.setVisibility(View.GONE);
                                 btnReload.setVisibility(View.VISIBLE);
 
                                 dialog.hide();
@@ -154,6 +154,8 @@ public class HomeActivity extends AppCompatActivity {
                     break;
             }
         }
+
+        adaptador.notifyDataSetChanged();
     }
 
     private void sincronizar(Mercadoria atual) {
